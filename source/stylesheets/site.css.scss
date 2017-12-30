@@ -1,0 +1,215 @@
+@charset "utf-8";
+@import "normalize";
+@import "bourbon";
+
+$dark: darken(ghostwhite, 30%);
+
+* { box-sizing: border-box }
+
+html, body {
+  z-index: 0;
+  font-family: "Lato";
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: $dark;
+}
+
+.tooltip {
+  @include transition(opacity, 200ms ease);
+  z-index: 3;
+  @include position(absolute, 76% 50%);
+  @include transform(translate(-50%, -50%));
+  pointer-events: none;
+  visibility: hidden;
+  width: 60ch;
+  min-height: 3rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.3);
+  color: rgba(25,50,50,1);
+  background-color: rgba(100,200,200,.9);
+  padding: 1ex 3ch;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.branding {
+  z-index: 2;
+  display: block;
+  position: fixed;
+  top: 24px;
+  left: 12px;
+  width: 54ch !important;
+  background: ghostwhite;
+  margin: 0;
+  padding: 4px 14px 7px 14px;
+  .logo {
+    white-space: nowrap;
+    font-size: 13pt;
+    font-weight: bold;
+    padding-right: 8px;
+    span:nth-child(1) {
+      font-size: .8em;;
+    }
+    span:nth-child(2) {
+      padding-left: 3ch;
+    }
+  }
+  .baseline {
+    font-size: 11pt;
+  }
+  .emphasis {
+    margin-bottom: -.5rem;
+    text-transform: uppercase;
+    color: red;
+  }
+}
+
+.cta-main-menu {
+  z-index: 2;
+  @include position(absolute, 50% 50%);
+  @include transform(translate(-50%, -50%) rotate(45deg));
+  @include transition(border, .4s linear);
+  display: block;
+  @include size(10ch);
+  border: 1rem solid transparent;
+  &:before, &:after {
+    content: "";
+    @include position(absolute);
+    box-sizing: border-box;
+    @include size(10ch);
+    float: left;
+    display: block;
+    opacity: 0;
+  }
+  &:before {
+    @include transition(opacity .1s linear);
+    border: 1rem solid rgba(0, 0, 0, .2);
+  }
+  &:after {
+    border: 0ch solid transparent;
+    top: -1rem;
+    left: -1rem;
+  }
+  &.is-visible {
+    &:after {
+      @include transition(border .2s linear, opacity .1s linear 0s);
+      opacity: 1;
+      border: 1rem solid ghostwhite;
+    }
+    &:before {
+      opacity: 1;
+    }
+  }
+  &.is-hidden {
+    &:after {
+      @include transition(border .2s linear, opacity .1s linear .4s);
+      opacity: 0;
+      border: 0rem solid ghostwhite;
+    }
+    &:before {
+      opacity: 0;
+    }
+  }
+}
+
+.parallaxed {
+  z-index: 0;
+  border: 1px solid ghostwhite;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  @include transform(translate(-50%, -50%) rotate(45deg));
+  width: 32%;
+  &:before {
+    content: "";
+    float: left;
+    padding-top: 100%;
+  }
+  .item1, .item2, .item3, .item4 {
+    border: 1px dashed ghostwhite;
+    display: block;
+    float: left;
+    position: relative;
+    width: 50%;
+    @include transition(left .2s linear, top .2s linear);
+    &:before {
+      content: "";
+      float: left;
+      padding-top: 100%;
+    }
+    .inner {
+      @include position(absolute, 0 0 0 0);
+      overflow: hidden;
+      h2 {
+        @include size(190% fit-content);
+        color: ghostwhite;
+        font-size: 2rem;
+        position: absolute;
+        display: inline-block;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    .overlay {
+      border: 1px solid darken(ghostwhite, 20%);
+      @include position(absolute);
+      @include size(80vw);
+      background-image:  linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, 0)), image-url("p.png");
+      background-repeat: repeat;
+      // background-image: image-url("p+.png");
+      // background-repeat: no-repeat;
+    }
+    .has-focus {}
+  }
+  .item1 {
+    h2 {
+      bottom: 0; right: 0;
+      @include transform(translate(50%, 50%) rotate(-45deg));
+      font-size: 2.6rem;
+    }
+    .overlay {
+      bottom: 0; right: 0;
+      @include transform(translate(20%, 20%) rotate(-45deg));
+      //background-position: bottom center;
+    }
+  }
+  .item2 {
+    h2 {
+      bottom: 0; left: 0;
+      @include transform(translate(-50%, 50%) rotate(-45deg));
+    }
+    .overlay {
+      bottom: 0; left: 0;
+      @include transform(translate(-20%, 20%) rotate(-45deg));
+      //background-position: center left;
+    }
+  }
+  .item3 {
+    h2 {
+      top: 0; right: 0;
+      @include transform(translate(50%, -50%) rotate(-45deg));
+    }
+    .overlay {
+      top: 0; right: 0;
+      @include transform(translate(20%, -20%) rotate(-45deg));
+      //background-position: center right;
+    }
+  }
+  .item4 {
+    h2 {
+      top: 0; left: 0;
+      @include transform(translate(-50%, -50%) rotate(-45deg));
+    }
+    .overlay {
+      top: 0; left: 0;
+      @include transform(translate(-20%, -20%) rotate(-45deg));
+      //background-position: top center;
+    }
+  }
+}
