@@ -1,11 +1,14 @@
 (function() {
-  var $parallaxed;
+  var $parallaxed, $tooltip;
 
   $parallaxed = document.querySelector(".parallaxed");
+
+  $tooltip = document.querySelector(".tooltip");
 
   document.querySelector(".cta-main-menu").onmouseenter = function() {
     var i, j, ref;
     $parallaxed.classList.add("has-focus");
+    $tooltip.style.opacity = .9;
     for (i = j = 0, ref = $parallaxed.children.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
       $parallaxed.children[i].style.transitionTimingFunction = "ease";
       $parallaxed.children[i].style.transitionDuration = Math.random() * 1 + .2 + "s";
@@ -13,18 +16,21 @@
       $parallaxed.children[i].style.top = "0px";
     }
     this.classList.remove("is-hidden");
-    return this.classList.add("is-visible");
+    this.classList.add("is-visible");
+    return $tooltip.style.visibility = 'visible';
   };
 
   document.querySelector(".cta-main-menu").onmouseleave = function() {
     var i, j, ref;
+    $tooltip.style.opacity = 0;
     for (i = j = 0, ref = $parallaxed.children.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
       $parallaxed.children[i].style.transitionTimingFunction = "linear";
       $parallaxed.children[i].style.transitionDuration = ".2s";
     }
     $parallaxed.classList.remove("has-focus");
     this.classList.remove("is-visible");
-    return this.classList.add("is-hidden");
+    this.classList.add("is-hidden");
+    return $tooltip.style.visibility = 'hidden';
   };
 
   window.onmousemove = function(e) {

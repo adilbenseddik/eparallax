@@ -3,9 +3,10 @@
 @import "bourbon";
 
 $dark: darken(ghostwhite, 30%);
+$pink: #b06ab3;
+$purple: #4568dc;
 
 * { box-sizing: border-box }
-
 html, body {
   z-index: 0;
   font-family: "Lato";
@@ -13,6 +14,56 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: $dark;
+  background: image-url('b.jpg') center center;
+  background-size: cover;
+}
+
+.background {
+  opacity: .9;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  //background: linear-gradient(to right, $purple, $pink );
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
 }
 
 .tooltip {
@@ -26,14 +77,14 @@ html, body {
   min-height: 3rem;
   text-transform: uppercase;
   border-radius: 4px;
-  box-shadow: 0 0 2px 0 rgba(0,0,0,.3);
-  color: rgba(25,50,50,1);
-  background-color: rgba(100,200,200,.9);
+  color: darken($pink, 50%);
+  background-color: ghostwhite;
   padding: 1ex 3ch;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.5);
 }
 
 .branding {
@@ -46,6 +97,7 @@ html, body {
   background: ghostwhite;
   margin: 0;
   padding: 4px 14px 7px 14px;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.3);
   .logo {
     white-space: nowrap;
     font-size: 13pt;
@@ -56,6 +108,7 @@ html, body {
     }
     span:nth-child(2) {
       padding-left: 3ch;
+      color: $pink;
     }
   }
   .baseline {
@@ -64,7 +117,7 @@ html, body {
   .emphasis {
     margin-bottom: -.5rem;
     text-transform: uppercase;
-    color: red;
+    color: darken($pink, 50%);
   }
 }
 

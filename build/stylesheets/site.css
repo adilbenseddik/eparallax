@@ -368,11 +368,71 @@ textarea {
   box-sizing: border-box; }
 
 html, body {
+  z-index: 0;
   font-family: "Lato";
-  background-color: #5f5fff;
-  overflow: hidden; }
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #5f5fff; }
+
+.tooltip {
+  -webkit-transition: opacity, 200ms ease;
+  -moz-transition: opacity, 200ms ease;
+  transition: opacity, 200ms ease;
+  z-index: 3;
+  position: absolute;
+  top: 76%;
+  right: 50%;
+  bottom: 76%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  visibility: hidden;
+  width: 60ch;
+  min-height: 3rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+  color: #193232;
+  background-color: rgba(100, 200, 200, 0.9);
+  padding: 1ex 3ch;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.branding {
+  z-index: 2;
+  display: block;
+  position: fixed;
+  top: 24px;
+  left: 12px;
+  width: 54ch !important;
+  background: ghostwhite;
+  margin: 0;
+  padding: 4px 14px 7px 14px; }
+  .branding .logo {
+    white-space: nowrap;
+    font-size: 13pt;
+    font-weight: bold;
+    padding-right: 8px; }
+    .branding .logo span:nth-child(1) {
+      font-size: .8em; }
+    .branding .logo span:nth-child(2) {
+      padding-left: 3ch; }
+  .branding .baseline {
+    font-size: 11pt; }
+  .branding .emphasis {
+    margin-bottom: -.5rem;
+    text-transform: uppercase;
+    color: red; }
 
 .cta-main-menu {
+  z-index: 2;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -426,6 +486,7 @@ html, body {
     opacity: 0; }
 
 .parallaxed {
+  z-index: 0;
   border: 1px solid ghostwhite;
   display: block;
   position: absolute;
@@ -485,7 +546,8 @@ html, body {
     -moz-transform: translate(50%, 50%) rotate(-45deg);
     -ms-transform: translate(50%, 50%) rotate(-45deg);
     -o-transform: translate(50%, 50%) rotate(-45deg);
-    transform: translate(50%, 50%) rotate(-45deg); }
+    transform: translate(50%, 50%) rotate(-45deg);
+    font-size: 2.6rem; }
   .parallaxed .item1 .overlay {
     bottom: 0;
     right: 0;
