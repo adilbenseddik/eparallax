@@ -1,4 +1,6 @@
 # Does the magic, maks everything parallax at once ;-{P
+$nav = document.querySelector(".navigation")
+$content = document.querySelector(".content")
 $parallaxed = document.querySelector(".parallaxed")
 $tooltip = document.querySelector(".tooltip")
 $cta = document.querySelector(".cta-main-menu")
@@ -36,6 +38,7 @@ $cta.onclick = ->
   this.classList.remove("is-visible")
   this.classList.add("is-hidden")
   $tooltip.style.visibility = 'hidden'
+  init()
 
 window.onmousemove = (e) ->
   ex = this.innerWidth / 2 - e.clientX
@@ -48,4 +51,17 @@ window.onmousemove = (e) ->
       $items[i].style.left = ex * r[i] + "px"
       $items[i].style.top = ey * r[i] + "px"
 
-
+init = ->
+  $nav.style.display = "flex"
+  $nav.children[0].classList.add("has-focus")
+  $content.style.display = "block"
+  $content.children[0].style.display = 'block'
+  for i in [0...$nav.children.length]
+    $nav.children[i].onclick = (e) ->
+      for i in [0...$nav.children.length]
+        $nav.children[i].classList.remove("has-focus")
+      e.target.classList.add("has-focus")
+      for i in [0...$content.children.length]
+        $content.children[i].style.display = "none"
+      css = e.target.innerText.toLowerCase()
+      document.querySelector('.'+css).style.display = "block"
