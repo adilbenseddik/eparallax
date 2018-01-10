@@ -11,6 +11,7 @@ $accent: rgb(250, 20, 220);
 html, body {
   z-index: 0;
   font-family: "Lato";
+  font-weight: 400;
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -24,7 +25,7 @@ html, body {
   width: 100vw; height: 100vh;
   z-index: 0;
   //background: linear-gradient(to right, $purple, $pink );
-  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background: linear-gradient(-45deg, #6D565C, #E3E3E5, #E73C7E, #E73C7E);
   background-size: 400% 400%;
   -webkit-animation: Gradient 35s ease infinite;
   -moz-animation: Gradient 35s ease infinite;
@@ -88,12 +89,18 @@ html, body {
   box-shadow: 0 0 2px 0 rgba(0,0,0,.5);
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .branding {
   z-index: 2;
-  display: block;
-  position: fixed;
-  top: 24px;
-  left: 12px;
+  //display: block;
+  //position: fixed;
+  //top: 24px;
+  //left: 12px;
   width: 54ch !important;
   background: ghostwhite;
   margin: 0;
@@ -102,13 +109,14 @@ html, body {
   .logo {
     white-space: nowrap;
     font-size: 13pt;
-    font-weight: bold;
+    font-weight: 700;
     padding-right: 8px;
     span:nth-child(1) {
       font-size: .8em;;
     }
     span:nth-child(2) {
       padding-left: 3ch;
+      font-weight: 900;
       color: $pink;
     }
   }
@@ -145,14 +153,14 @@ html, body {
 
 .content {
   z-index: 2;
-  position: fixed;
-  display: none;
-  top: 273px;
-  left: 12px;
+  //position: fixed;
+  //display: none;
+  //top: 273px;
+  //left: 12px;
   width: 54ch !important;
   margin: 0;
   padding: 4px 14px 7px 14px;
-  background: bisque;
+  background: white;
   color: darken(bisque, 80%);
   box-shadow: 0 0 2px 0 rgba(0,0,0,.3);
   .item {
